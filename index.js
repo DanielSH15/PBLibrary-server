@@ -4,6 +4,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const { registration, login, update, read, auth, findAll, deleteUser} = require('./controllers/userController')
+const { createBook } = require('./controllers/bookController')
 
 //DB CONNECTION
 const db = process.env.MONGO_URI || 'mongodb+srv://Daniel:Psw123@cluster0.bffzqgt.mongodb.net/Database1'
@@ -20,6 +21,8 @@ app.put('/update/:_id', update)
 app.get('/read', auth, read)
 app.get('/readall', findAll)
 app.delete('/delete/:_id', deleteUser)
+
+app.post('/createbook', createBook)
 
 
 const PORT = process.env.PORT || 8000
